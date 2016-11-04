@@ -51,7 +51,7 @@ public class TimeMLReader {
     }
 
     public List<Result> read(String text, Date currentData) throws JDOMException, IOException, DocumentCreationTimeMissingException {
-        
+
         List<Result> list = new ArrayList<>();
         List listtimevalues = ListFromXml(text, currentData);
         Iterator i = listtimevalues.iterator();
@@ -69,19 +69,32 @@ public class TimeMLReader {
         return Collections.unmodifiableList(list);
     }
 
-
     public List ListFromXml(String text, Date currentData) throws JDOMException, IOException, DocumentCreationTimeMissingException {
 
-        if(text == null || currentData == null) return Collections.EMPTY_LIST;
+        if (text == null) {
+            return Collections.EMPTY_LIST;
+        }
+
+        String xml = "";
         
-        String xml = heidelTimeStandalone.process(text, new Date(), timeMLResultFormatter);
+        if (currentData != null) {
+            xml = heidelTimeStandalone.process(text, currentData, timeMLResultFormatter);
+        } else {
+            
+            HeidelTimeStandalone hts = new HeidelTimeStandalone(Language.PORTUGUESE,
+                DocumentType.NARRATIVES,
+                OutputType.TIMEML, this.configPropsPath, POSTagger.NO, false);
+            
+            xml = hts.process(text, timeMLResultFormatter);
+        }
+        
         reader = new StringReader(xml);
         Document doc = builder.build(reader);
-        Element root = ( Element ) doc.getRootElement();
+        Element root = (Element) doc.getRootElement();
         List result = root.getChildren();
-        
+
         reader.close();
         return result;
     }
-    
+
 }

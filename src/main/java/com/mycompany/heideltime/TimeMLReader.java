@@ -96,5 +96,4 @@ public class TimeMLReader {
         reader.close();
         return result;
     }
-
 }

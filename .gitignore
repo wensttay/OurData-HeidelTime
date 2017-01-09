@@ -2,6 +2,11 @@
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
+<<<<<<< HEAD
+=======
+/target
+/target/*
+>>>>>>> 999e9cbf577d3b764329e45b5244370c2c0eeb6e
 
 # Package Files #
 *.jar

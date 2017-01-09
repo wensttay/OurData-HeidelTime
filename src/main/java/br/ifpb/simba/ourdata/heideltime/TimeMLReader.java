@@ -76,11 +76,23 @@ public class TimeMLReader {
 
     public List ListFromXml(String text, Date currentData) throws JDOMException, IOException, DocumentCreationTimeMissingException {
 
-        if (text == null || currentData == null) {
+        if (text == null) {
             return Collections.EMPTY_LIST;
         }
 
-        String xml = heidelTimeStandalone.process(text, new Date(), timeMLResultFormatter);
+        String xml = "";
+        
+        if (currentData != null) {
+            xml = heidelTimeStandalone.process(text, currentData, timeMLResultFormatter);
+        } else {
+            
+            HeidelTimeStandalone hts = new HeidelTimeStandalone(Language.PORTUGUESE,
+                DocumentType.NARRATIVES,
+                OutputType.TIMEML, this.configPropsPath, POSTagger.NO, false);
+            
+            xml = hts.process(text, timeMLResultFormatter);
+        }
+        
         reader = new StringReader(xml);
         Document doc = builder.build(reader);
         Element root = (Element) doc.getRootElement();

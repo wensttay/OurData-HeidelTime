@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.mycompany.heideltime;
+package br.ifpb.simba.ourdata.heideltime;
 
 import de.unihd.dbs.heideltime.standalone.DocumentType;
 import de.unihd.dbs.heideltime.standalone.HeidelTimeStandalone;
@@ -12,12 +7,12 @@ import de.unihd.dbs.heideltime.standalone.OutputType;
 import de.unihd.dbs.heideltime.standalone.POSTagger;
 import de.unihd.dbs.heideltime.standalone.components.impl.TimeMLResultFormatter;
 import java.util.Date;
-import java.util.List;
-import org.jdom.input.SAXBuilder;
 
 /**
  *
- * @author Fabio
+ * @version 1.0
+ * @author Wensttay de Sousa Alencar <yattsnew@gmail.com>
+ * @date 07/01/2017 - 12:01:31
  */
 public class SimpleExempleHeidelTime {
 

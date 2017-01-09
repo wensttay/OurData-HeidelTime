@@ -1,4 +1,4 @@
-package com.mycompany.heideltime;
+package br.ifpb.simba.ourdata.heideltime;
 
 import de.unihd.dbs.heideltime.standalone.DocumentType;
 import de.unihd.dbs.heideltime.standalone.HeidelTimeStandalone;
@@ -15,12 +15,17 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 
+/**
+ *
+ * @version 1.0
+ * @author Wensttay de Sousa Alencar <yattsnew@gmail.com>
+ * @date 07/01/2017 - 12:01:31
+ */
 public class TimeMLReader {
 
     public static final String DEFAULT_CONFIGPROPS_PATH
@@ -51,7 +56,7 @@ public class TimeMLReader {
     }
 
     public List<Result> read(String text, Date currentData) throws JDOMException, IOException, DocumentCreationTimeMissingException {
-        
+
         List<Result> list = new ArrayList<>();
         List listtimevalues = ListFromXml(text, currentData);
         Iterator i = listtimevalues.iterator();
@@ -69,19 +74,20 @@ public class TimeMLReader {
         return Collections.unmodifiableList(list);
     }
 
-
     public List ListFromXml(String text, Date currentData) throws JDOMException, IOException, DocumentCreationTimeMissingException {
 
-        if(text == null || currentData == null) return Collections.EMPTY_LIST;
-        
+        if (text == null || currentData == null) {
+            return Collections.EMPTY_LIST;
+        }
+
         String xml = heidelTimeStandalone.process(text, new Date(), timeMLResultFormatter);
         reader = new StringReader(xml);
         Document doc = builder.build(reader);
-        Element root = ( Element ) doc.getRootElement();
+        Element root = (Element) doc.getRootElement();
         List result = root.getChildren();
-        
+
         reader.close();
         return result;
     }
-    
+
 }

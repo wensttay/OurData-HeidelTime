@@ -35,18 +35,6 @@
             <version>3.3.1</version>
             <type>jar</type>
         </dependency>-->
-        <dependency>
-            <groupId>com.mycompany</groupId>
-            <artifactId>OutData</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <type>war</type>
-        </dependency>
-        <dependency>
-            <groupId>br.ifpb.simba.ourdata</groupId>
-            <artifactId>OutData</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <type>war</type>
-        </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

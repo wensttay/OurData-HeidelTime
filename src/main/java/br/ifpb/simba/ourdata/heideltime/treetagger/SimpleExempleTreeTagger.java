@@ -12,11 +12,11 @@ public class SimpleExempleTreeTagger {
         try {
             System.out.println(System.getProperty("user.dir"));
             String text = "I worked there from 2012 to 2016";
-            String treetageerHome = "/usr/local/Program Files/tree-tagger-linux-3.2.1";
+            String treetageerHome = "/home/wensttay/Program Files/Treetagger";
 
             System.setProperty("treetagger.home", treetageerHome);
             TreeTaggerWrapper tt = new TreeTaggerWrapper();
-            tt.setModel(treetageerHome + "/lib/english.par");
+            tt.setModel(treetageerHome + "/lib/english-utf8.par");
             tt.setHandler(new TreeTaggerTokenHandler());
             tt.process(text.split(" "));
             tt.destroy();

@@ -18,7 +18,7 @@ public class SimpleExempleHeidelTime {
 
     public static void main(String[] args) {
         try {
-            String path = "/home/wensttay/Documentos/DevWorkspace/Projetos de Pesquisa/OurData/Projects/HeidelTime/config.props";
+            String path = System.getProperty("user.dir") + "/config.props";
             HeidelTimeStandalone hts = new HeidelTimeStandalone(Language.PORTUGUESE,
                     DocumentType.NEWS,
                     OutputType.TIMEML, path, POSTagger.NO, false);

@@ -29,7 +29,7 @@ import org.jdom.input.SAXBuilder;
 public class TimeMLReader {
 
     public static final String DEFAULT_CONFIGPROPS_PATH
-            = "/home/wensttay/Documentos/DevWorkspace/Projetos de Pesquisa/OurData/Projects/HeidelTime/config.props";
+            = System.getProperty("user.dir") + "/config.props";
 
     private SAXBuilder builder;
     private HeidelTimeStandalone heidelTimeStandalone;
